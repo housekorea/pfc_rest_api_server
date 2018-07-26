@@ -60,7 +60,7 @@ def index():
 def v1_blynk_index():
 	return "Hello, this is blynk index"
 
-@app.route('/v1/<blynkauthtoken>/', methods=['GET','POST'])
+@app.route('/v1/<blynkauthtoken>/insert/', methods=['GET','POST'])
 def v1_blynk_auth_token(blynkauthtoken):
 	with open(TOKEN_FILE_NAME) as f:
 		token_list = [line.rstrip() for line in f]
@@ -108,4 +108,4 @@ def v1_blynk_auth_token(blynkauthtoken):
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run(host='201.92.91.225',debug=True)
