@@ -1,4 +1,8 @@
 token_list.txt
 pfc_log_data.log
 sftp-config.json
+*.png
+*.jpeg
+*.jpg
+
 

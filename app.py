@@ -9,7 +9,7 @@ DB_FILE_NAME = 'pfc_log_data.log'
 TOKEN_FILE_NAME = 'token_list.txt'
 
 def sensor_db_insert(authtoken,key,value,unix_ts):
-	print('this is error test ! ', file=sys.stderr)
+	# print('this is error test ! ', file=sys.stderr)
 	with open(DB_FILE_NAME,"a") as logf:
 		log_raw = authtoken +',' + key + ',' + value  +','+unix_ts + "\r\n"
 		logf.write(log_raw)		
@@ -20,9 +20,9 @@ app = Flask("PFC_REST_API_SERVER")
 
 query_string = {
 	'sensor' : [
-		'air_temp',
-		'air_hum',
-		'water_temp',
+		'at',
+		'ah',
+		'wt',
 		'ph',
 		'ec',
 		'ldr',
@@ -59,6 +59,16 @@ def index():
 @app.route('/v1/blynk_auth_list')
 def v1_blynk_index():
 	return "Hello, this is blynk index"
+
+@app.route('/v1/all_data', methods=['GET'])
+def v1_get_all_data():
+	with open(DB_FILE_NAME) as logf:
+		log_list = logf.readlines()
+
+	return "<br>".join(log_list)
+
+
+
 
 @app.route('/v1/<blynkauthtoken>/insert/', methods=['GET','POST'])
 def v1_blynk_auth_token(blynkauthtoken):
@@ -108,4 +118,4 @@ def v1_blynk_auth_token(blynkauthtoken):
 
 
 if __name__ == '__main__':
-	app.run(host='201.92.91.225',debug=True)
+	app.run(host='210.92.91.225',debug=True)
