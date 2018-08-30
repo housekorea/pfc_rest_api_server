@@ -5,4 +5,5 @@ sftp-config.json
 *.jpeg
 *.jpg
 *.zip
+.DS_Store
 

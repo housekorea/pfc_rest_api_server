@@ -10,11 +10,11 @@ print(sys.version)
 
 # sys.exit()
 
-for i in range(0,11):
+for i in range(0,24):
 	hour_s = str(i).zfill(2)
 	for j in [2,5] :
 		min_s = str(j) + str(0);
-		f_path = "2018-08-15_" + hour_s + ":" + min_s + ":01.jpg"
+		f_path = "2018-08-22_" + hour_s + ":" + min_s + ":01.jpg"
 		# print(f_path)
 
 # print(f_path)
